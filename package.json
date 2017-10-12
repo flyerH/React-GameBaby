@@ -1,0 +1,53 @@
+{
+  "name": "react-retro-snaker",
+  "version": "1.0.0",
+  "description": "使用React编写的贪吃蛇",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./config/webpack.dev.conf.js  --open --inline --hot --colors --progress",
+    "build": "rimraf ./dist/* && webpack --config ./config/webpack.prod.conf.js"
+  },
+  "keywords": [
+    "贪吃蛇",
+    "React"
+  ],
+  "author": "flyerH",
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.2.0",
+    "eslint-config-airbnb": "^15.0.2",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.1.0",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "html-webpack-plugin": "^2.29.0",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "react-hot-loader": "^1.3.1",
+    "redux-devtools": "^3.4.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.1.0",
+    "webpack-dev-server": "^2.5.1",
+    "webpack-merge": "^4.1.0"
+  },
+  "dependencies": {
+    "immutable": "^3.8.1",
+    "intl": "^1.2.5",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-hot-loader": "^3.0.0-beta.7",
+    "react-immutable-proptypes": "^2.1.0",
+    "react-intl": "^2.3.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-immutable": "^4.0.0"
+  }
+}
