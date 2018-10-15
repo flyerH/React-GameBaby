@@ -18,6 +18,9 @@ module.exports = {
     "class-methods-use-this": 0,
     "react/no-unused-prop-types": 1,
     "no-param-reassign": 0,
+    "comma-dangle": 0,
+    "eol-last": 0,
+    "no-trailing-spaces": "error"
   },
   "env": {
     "browser": true

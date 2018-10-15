@@ -6,6 +6,7 @@ const baseWebpackConfig = require('./webpack.base.conf');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const path = require('path');
 
@@ -15,26 +16,21 @@ module.exports = merge(baseWebpackConfig, {
     publicPath: '/',
   },
   module: {
-    rules: [
-      {
-        test: /\.(scss|css)$/,
-        use: [{
-          loader: 'style-loader',
-        }, {
+    rules: [{
+      test: /\.(scss|css)$/,
+      use: [
+        MiniCssExtractPlugin.loader, {
           loader: 'css-loader',
           options: {
             sourceMap: true,
             modules: true,
-            localIdentName: '[path][name]_[local]-[hash:base64:5]',
+            localIdentName: '[path][name]_[local]-[hash:base64:5]'
           },
         }, {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true,
-          },
-        }],
-      },
-    ],
+          loader: 'postcss-loader'
+        }
+      ],
+    }],
   },
   devServer: {
     contentBase: './public',
@@ -50,6 +46,7 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       inject: true,
       template: './public/index.html',
-    })],
-})
-
+    }),
+    new MiniCssExtractPlugin()
+  ],
+});
