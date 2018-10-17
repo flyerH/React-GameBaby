@@ -3,6 +3,7 @@
  * E-mail:h@strawtc.cn
  */
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader';
 import { FormattedMessage } from 'react-intl';
 import BackgroundLeft from '../Background/Left';
 import Content from '../Content';
@@ -45,7 +46,9 @@ class App extends Component {
       top = Math.round((this.state.winHeight - Math.round(this.state.winWidth * 1.46)) / scale / 2);
     }
     return (
-      <div className={style.app} style={{ transform: `scale(${scale})`, paddingTop: top === 0 ? '' : top, paddingBottom: top === 0 ? '' : top, marginTop: top === 0 ? '' : -475 - top }}>
+      <div className={style.app} style={{
+ transform: `scale(${scale})`, paddingTop: top === 0 ? '' : top, paddingBottom: top === 0 ? '' : top, marginTop: top === 0 ? '' : -475 - top 
+}}>
         <BackgroundLeft />
         <Content />
         <BackgroundRight />
@@ -54,4 +57,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default hot(module)(App);

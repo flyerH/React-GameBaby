@@ -20,7 +20,10 @@ module.exports = {
     "no-param-reassign": 0,
     "comma-dangle": 0,
     "eol-last": 0,
-    "no-trailing-spaces": "error"
+    "no-trailing-spaces": "error",
+    "react/destructuring-assignment": "warn",
+    "space-in-parens": "warn",
+    "react/no-unused-state": "warn"
   },
   "env": {
     "browser": true
