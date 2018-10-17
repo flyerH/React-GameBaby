@@ -2,15 +2,14 @@
  * Created by He on 2017/7/9.
  * E-mail:h@strawtc.cn
  */
-const baseWebpackConfig = require('./webpack.base.conf');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const path = require('path');
+const baseWebpackConfig = require('./webpack.base.conf');
 
 module.exports = merge(baseWebpackConfig, {
+  mode: 'development',
   output: {
     filename: 'js/[name].js',
     publicPath: '/',

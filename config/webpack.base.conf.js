@@ -8,7 +8,7 @@ const path = require('path');
 module.exports = {
   devtool: 'eval-source-map',
   entry: {
-    app: ['react-hot-loader/patch', './src/index.js'],
+    app: ['./src/index.js'],
   },
   /* output: {
     // [name]对应entry的key（也就是app）
@@ -30,10 +30,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react'],
-        },
+        exclude: /node_modules/
       },
     ],
   },

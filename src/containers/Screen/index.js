@@ -9,7 +9,9 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { dropBlock, setBlock, setBlank, runBlock, addBlock, setFood, setSnakeDir, setKeyCode } from '../../action';
+import {
+  dropBlock, setBlock, setBlank, runBlock, addBlock, setFood, setSnakeDir, setKeyCode
+} from '../../action';
 import style from './style.scss';
 import config from '../../../config';
 
@@ -321,27 +323,11 @@ class Screen extends Component {
   }
 
   render() {
-    const setTable = () =>
-      /* if (false) { //FIXME 组件内state方法，测试完毕后删除
-        // if (this.state.step !== 3) {
-        return (
-          this.state.table.map((value, i) => (<div key={i} className={style.outBlock}> {
-            value.map((value2, index2) => (
-              <div
-                key={index2}
-                className={
-                  // this.state.table[i][index2] === 1 ? style.blockBlack : style.block
-                  this.state.table.getIn([i, index2]) === 1 ? style.blockBlack : style.block
-                }
-              />),
-            )
-          }
-          </div>),
-          )
-        );
-      } */
-      (
-        this.props.table.map((value, i) => (<div key={i} className={style.outBlock}> {
+    const setTable = () => (
+      this.props.table.map((value, i) => (
+        <div key={i} className={style.outBlock}>
+          {' '}
+          {
           value.map((value2, index2) => (
             <div
               key={index2}
@@ -349,14 +335,11 @@ class Screen extends Component {
               // this.state.table[i][index2] === 1 ? style.blockBlack : style.block
                 this.props.table.getIn([i, index2]) === 1 ? style.blockBlack : style.block
               }
-            />),
-          )
+            />), )
         }
-        </div>),
-        )
-      )
-    ;
-
+        </div>
+      ), )
+    );
     return (
       <div className={style.screen}>
         <div className={style.left}>

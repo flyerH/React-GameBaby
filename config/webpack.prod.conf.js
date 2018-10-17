@@ -2,11 +2,11 @@
  * Created by He on 2017/7/10.
  * E-mail:h@strawtc.cn
  */
-const baseWebpackConfig = require('./webpack.base.conf');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const baseWebpackConfig = require('./webpack.base.conf');
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
