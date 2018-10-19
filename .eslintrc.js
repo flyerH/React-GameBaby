@@ -21,7 +21,12 @@ module.exports = {
     "comma-dangle": 0,
     "eol-last": 0,
     "no-trailing-spaces": "error",
-    "react/destructuring-assignment": "warn",
+    "object-curly-newline": 0,
+    "react/jsx-first-prop-new-line": 0,
+    "react/jsx-max-props-per-line": 0,
+    "react/jsx-curly-spacing": 0,
+    "no-trailing-spaces": 0,
+    "react/destructuring-assignment": "off",
     "space-in-parens": "warn",
     "react/no-unused-state": "warn"
   },

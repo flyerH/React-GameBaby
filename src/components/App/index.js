@@ -16,11 +16,11 @@ class App extends Component {
     this.state = {
       winWidth: document.documentElement.clientWidth,
       winHeight: document.documentElement.clientHeight,
-      scaleCount: `scale(${document.documentElement.clientHeight / 950})`,
+      // scaleCount: `scale(${document.documentElement.clientHeight / 950})`,
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     window.addEventListener('resize', this.resize.bind(this));
   }
 
@@ -38,17 +38,25 @@ class App extends Component {
   render() {
     let scale = 0;
     let top = 0;
-    if (this.state.winHeight / this.state.winWidth < 1.46) {
+    const { winWidth, winHeight } = this.state;
+
+    if (winHeight / winWidth < 1.46) {
       scale = window.innerHeight / 950;
       top = 0;
     } else {
-      scale = this.state.winWidth / 650;
-      top = Math.round((this.state.winHeight - Math.round(this.state.winWidth * 1.46)) / scale / 2);
+      scale = winWidth / 650;
+      top = Math.round((winHeight - Math.round(winWidth * 1.46)) / scale / 2);
     }
+
+    const outStyle = {
+      transform: `scale(${scale})`,
+      paddingTop: top === 0 ? '' : top,
+      paddingBottom: top === 0 ? '' : top,
+      marginTop: top === 0 ? '' : -475 - top
+    };
+
     return (
-      <div className={style.app} style={{
- transform: `scale(${scale})`, paddingTop: top === 0 ? '' : top, paddingBottom: top === 0 ? '' : top, marginTop: top === 0 ? '' : -475 - top 
-}}>
+      <div className={ style.app } style={outStyle}>
         <BackgroundLeft />
         <Content />
         <BackgroundRight />
