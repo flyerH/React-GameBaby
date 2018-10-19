@@ -4,7 +4,7 @@
   "description": "使用React编写的贪吃蛇",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./config/webpack.dev.conf.js  --open --inline --hot --colors --progress",
+    "start": "webpack-dev-server --config ./config/webpack.dev.conf.js  --open --inline --colors --progress",
     "build": "rimraf ./dist/* && webpack --config ./config/webpack.prod.conf.js",
     "dev": "yarn run start"
   },

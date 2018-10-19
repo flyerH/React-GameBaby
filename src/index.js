@@ -42,5 +42,6 @@ ReactDOM.render(
     <Provider store={store}>
       <App />
     </Provider>
-  </IntlProvider>
-  , document.getElementById('root'));
+  </IntlProvider>,
+  document.getElementById('root')
+);

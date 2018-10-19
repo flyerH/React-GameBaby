@@ -29,9 +29,10 @@ class Screen extends Component {
   }
 
   componentWillMount() {
+    const { table } = this.props;
     this.setState({
       // table: this.props.table.toJS(),
-      table: this.props.table,
+      table,
     }, () => {
       // this.setFood();
     });
@@ -41,7 +42,8 @@ class Screen extends Component {
   componentDidMount() {
     this.initAnimation();
     window.addEventListener('keyup', (event) => {
-      switch (event.keyCode) {
+      const { keyCode } = event;
+      switch (keyCode) {
         /* case 13:
           this.start();
           break; */
@@ -50,9 +52,9 @@ class Screen extends Component {
           break;
 
         default:
-          if (event.keyCode === 37 || event.keyCode === 38
-            || event.keyCode === 39 || event.keyCode === 40) {
-            this.props.setSnakeDir(event.keyCode);
+          if (keyCode === 37 || keyCode === 38
+            || keyCode === 39 || keyCode === 40) {
+            this.props.setSnakeDir(keyCode);
           }
           break;
       }
@@ -335,10 +337,10 @@ class Screen extends Component {
               // this.state.table[i][index2] === 1 ? style.blockBlack : style.block
                 this.props.table.getIn([i, index2]) === 1 ? style.blockBlack : style.block
               }
-            />), )
+            />))
         }
         </div>
-      ), )
+      ))
     );
     return (
       <div className={style.screen}>

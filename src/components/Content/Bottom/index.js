@@ -15,6 +15,7 @@ class ContentBottom extends Component {
     super();
     this.buttonClick = this.buttonClick.bind(this);
   }
+
   buttonClick(e) {
     switch (e.target.id) {
       case 'topButton':
@@ -117,10 +118,10 @@ class ContentBottom extends Component {
               )
             }
           </FormattedMessage>
-          <span className={style.rotateArrowLeft} >
+          <span className={style.rotateArrowLeft}>
             <span className={style.rotateArrowBody} />
           </span>
-          <span className={style.rotateArrowRight} >
+          <span className={style.rotateArrowRight}>
             <span className={style.rotateArrowBody} />
           </span>
         </div>
@@ -145,4 +146,3 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContentBottom);
-
