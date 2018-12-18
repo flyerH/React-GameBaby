@@ -7,15 +7,10 @@ const path = require('path');
 
 module.exports = {
   devtool: 'eval-source-map',
-  entry: {
-    app: ['./src/index.js'],
+  entry: './src/index.js',
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
-  /* output: {
-    // [name]对应entry的key（也就是app）
-    // filename: 'js/[name].js',
-    path: path.resolve(__dirname, '../dist/static'),
-    // publicPath: './static/',
-  }, */
   module: {
     rules: [
       {

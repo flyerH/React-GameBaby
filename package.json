@@ -1,10 +1,10 @@
 {
-  "name": "react-retro-snaker",
+  "name": "react-gamebaby",
   "version": "1.0.0",
-  "description": "使用React编写的贪吃蛇",
+  "description": "用React编写的游戏机",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./config/webpack.dev.conf.js  --open --inline --colors --progress",
+    "start": "webpack-dev-server --config ./config/webpack.dev.conf.js  --inline --colors --progress",
     "build": "rimraf ./dist/* && webpack --config ./config/webpack.prod.conf.js",
     "dev": "yarn run start"
   },
@@ -13,7 +13,11 @@
     "React"
   ],
   "author": "flyerH",
-  "license": "MPL-2.0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flyerH/react-gamebaby/issues"
+  },
+  "homepage": "https://github.com/flyerH/react-gamebaby#readme",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
@@ -28,7 +32,6 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
     "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.4.4",
     "postcss-loader": "^3.0.0",
     "precss": "^3.1.2",
     "redux-devtools": "^3.4.0",
@@ -39,14 +42,14 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "immutable": "^3.8.1",
+    "immutable": "^4.0.0-rc.12",
     "intl": "^1.2.5",
     "prop-types": "^15.5.10",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "react": "16.6.3",
+    "react-dom": "16.6.3",
     "react-hot-loader": "^4.3.11",
     "react-immutable-proptypes": "^2.1.0",
-    "react-intl": "^2.3.0",
+    "react-intl": "^2.7.2",
     "react-redux": "^5.0.6",
     "redux": "^4.0.1",
     "redux-immutable": "^4.0.0"
