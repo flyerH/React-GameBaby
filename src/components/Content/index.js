@@ -1,4 +1,3 @@
-/* eslint-disable object-shorthand */
 /*!
  * Created by He on 2017/8/30.
  * E-mail:h@strawtc.cn
