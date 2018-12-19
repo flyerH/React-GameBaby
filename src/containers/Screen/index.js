@@ -40,7 +40,7 @@ class Screen extends Component {
 
 
   componentDidMount() {
-    this.initAnimation();
+    // this.initAnimation();
     window.addEventListener('keyup', (event) => {
       const { keyCode } = event;
       switch (keyCode) {

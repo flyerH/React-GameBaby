@@ -1,34 +1,41 @@
-/*!
- * Created by He on 2017/7/9.
- * E-mail:h@strawtc.cn
+/*
+ * Created  by flyerH on 2017/7/9. 
+ * Modified by flyerH on 2018/12/19 11:37:32.
  */
+
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+
 const baseWebpackConfig = require('./webpack.base.conf');
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   output: {
     filename: 'js/[name].js',
-    publicPath: '/',
+    publicPath: '/'
   },
   module: {
-    rules: [{
-      test: /\.(scss|css)$/,
-      use: [
-        'style-loader', {
-          loader: 'css-loader',
-          options: {
-            sourceMap: true,
-            modules: true,
-            localIdentName: '[local]'
+    rules: [
+      {
+        test: /\.(scss|css)$/,
+        loaders: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              localIdentName: '[local]'
+            }
           },
-        }, {
-          loader: 'postcss-loader'
-        }
-      ],
-    }],
+          {
+            loader: 'postcss-loader'
+          }
+        ]
+      }
+    ]
   },
   devServer: {
     contentBase: './public',
@@ -36,13 +43,20 @@ module.exports = merge(baseWebpackConfig, {
     hot: true,
     port: 8088,
     inline: true,
+    quiet: true
   },
   plugins: [
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: ['Your application is running here: http://localhost:8088']
+      },
+      clearConsole: true
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
-      template: './public/index.html',
+      template: './public/index.html'
     })
   ]
 });

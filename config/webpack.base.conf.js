@@ -1,9 +1,9 @@
-/*!
- * Created by He on 2017/7/9.
- * E-mail:h@strawtc.cn
+/*
+ * Created  by flyerH on 2017/7/9.
+ * Modified by flyerH on 2018/12/20 12:40:16.
  */
-const path = require('path');
 
+const path = require('path');
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -19,14 +19,14 @@ module.exports = {
         loader: 'eslint-loader',
         exclude: /node_modules/,
         options: {
-          emitWarning: true,
+          emitWarning: true
         }
       },
       {
         test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
+        use: ['babel-loader?cacheDirectory'],
         exclude: /node_modules/
-      },
-    ],
-  },
+      }
+    ]
+  }
 };
