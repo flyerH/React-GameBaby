@@ -1,8 +1,3 @@
-/*
- * Created  by flyerH on 2017/7/9.
- * Modified by flyerH on 2018/12/20 12:40:16.
- */
-
 const path = require('path');
 
 module.exports = {

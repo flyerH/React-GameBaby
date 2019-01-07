@@ -1,8 +1,3 @@
-/*
- * Created  by flyerH on 2017/7/9. 
- * Modified by flyerH on 2018/12/19 11:37:32.
- */
-
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');

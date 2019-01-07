@@ -9,9 +9,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  dropBlock, setBlock, setBlank, runBlock, addBlock, setFood, setSnakeDir, setKeyCode
-} from '../../action';
+import { dropBlock, setBlock, setBlank, runBlock, addBlock, setFood, setSnakeDir, setKeyCode } from '../../action';
 import style from './style.scss';
 import config from '../../../config';
 
@@ -30,18 +28,20 @@ class Screen extends Component {
 
   componentWillMount() {
     const { table } = this.props;
-    this.setState({
-      // table: this.props.table.toJS(),
-      table,
-    }, () => {
-      // this.setFood();
-    });
+    this.setState(
+      {
+        // table: this.props.table.toJS(),
+        table,
+      },
+      () => {
+        // this.setFood();
+      }
+    );
   }
 
-
   componentDidMount() {
-    // this.initAnimation();
-    window.addEventListener('keyup', (event) => {
+    this.initAnimation();
+    window.addEventListener('keyup', event => {
       const { keyCode } = event;
       switch (keyCode) {
         /* case 13:
@@ -52,8 +52,7 @@ class Screen extends Component {
           break;
 
         default:
-          if (keyCode === 37 || keyCode === 38
-            || keyCode === 39 || keyCode === 40) {
+          if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
             this.props.setSnakeDir(keyCode);
           }
           break;
@@ -68,12 +67,10 @@ class Screen extends Component {
     }
   }
 
-
   /* shouldComponentUpdate(nextProps = {}) {
     return !(Immutable.is(nextProps.table, this.props.table) &&
       Immutable.is(nextProps.snake, this.props.snake));
   } */
-
 
   getRandom(min, max) {
     const num = min + Math.round(Math.random() * (max - min));
@@ -93,8 +90,8 @@ class Screen extends Component {
       }
     }
     this.setState({
-      foodX: foodX,
-      foodY: foodY,
+      foodX,
+      foodY,
     });
     // this.props.setFood(foodX, foodY, 1);
   }
@@ -105,17 +102,23 @@ class Screen extends Component {
       case 1:
         clearTimeout(this.stepOneTimer);
         this.props.setBlank();
-        this.setState({
-          step: 2,
-          table: this.props.table,
-        }, this.initSnakeAnimation);
+        this.setState(
+          {
+            step: 2,
+            table: this.props.table,
+          },
+          this.initSnakeAnimation
+        );
         break;
       case 2:
         this.setFood();
-        this.setState({
-          table: this.props.table,
-          step: 3,
-        }, this.start);
+        this.setState(
+          {
+            table: this.props.table,
+            step: 3,
+          },
+          this.start
+        );
         break;
       default:
     }
@@ -287,69 +290,42 @@ class Screen extends Component {
     for (let i = 0, l = config.nIn1.length; i < l; ++i) {
       this.props.setBlock(config.nIn1[i][0], config.nIn1[i][1], 1);
     }
-    /* let tempTable = this.state.table; //FIXME 组件内state方法，测试完毕后删除
-    // 绘制 2 IN 1 这四个字
-    for (let i = 0, l = config.nIn1.length; i < l; ++i) {
-      tempTable = tempTable.setIn([config.nIn1[i][0], config.nIn1[i][1]], 1);
-    }
-    this.setState({
-      table: tempTable,
-    }); */
-    // 顺时针一圈一圈变黑的动画
-    for (let i = 0, l = config.oneAnimation.length; i <= l; ++i) {
-      if (this.state.step !== 1) {
-        clearTimeout(this.stepOneTimer);
-        break;
+    let i = 0;
+
+    const l = config.oneAnimation.length;
+    const stepOneTimer = () => {
+      if (i >= l) {
+        this.props.setBlank();
+        this.initAnimation();
+      } else {
+        this.props.setBlock(config.oneAnimation[i][0], config.oneAnimation[i][1], 1);
+        i += 1;
+        requestAnimationFrame(stepOneTimer);
       }
-      this.stepOneTimer = setTimeout((table = this.state.table) => {
-        // table[config.oneAnimation[i][0]][config.oneAnimation[i][1]] = 1;
-        if (this.state.step === 1) { // 如果step为1，则还处于第一个流程，初始动画
-          /* this.setState({ //FIXME 组件内state方法，测试完毕后删除
-            table: table.setIn([config.oneAnimation[i][0], config.oneAnimation[i][1]], 1),
-          }); */
-          if (i >= l) {
-            /* this.setState({ //FIXME 组件内state方法，测试完毕后删除
-              // table: this.props.table.toJS(),
-              table: this.props.table,
-            }, this.initAnimation); */
-            this.props.setBlank();
-            this.initAnimation();
-          } else {
-            this.props.setBlock(config.oneAnimation[i][0], config.oneAnimation[i][1], 1);
-          }
-        } else { // 如果stepOne流程结束，则不再执行动画
-          clearTimeout(this.stepOneTimer);
-        }
-      }, (l / 12) * i);
-    }
+    };
+    requestAnimationFrame(stepOneTimer);
   }
 
   render() {
-    const setTable = () => (
+    const setTable = () =>
       this.props.table.map((value, i) => (
         <div key={i} className={style.outBlock}>
           {' '}
-          {
-          value.map((value2, index2) => (
+          {value.map((value2, index2) => (
             <div
               key={index2}
               className={
-              // this.state.table[i][index2] === 1 ? style.blockBlack : style.block
+                // this.state.table[i][index2] === 1 ? style.blockBlack : style.block
                 this.props.table.getIn([i, index2]) === 1 ? style.blockBlack : style.block
               }
-            />))
-        }
+            />
+          ))}
         </div>
-      ))
-    );
+      ));
     return (
       <div className={style.screen}>
-        <div className={style.left}>
-          {setTable()}
-        </div>
-        <div className={style.right}>
-          Right
-        </div>
+        <div className={style.left}>{setTable()}</div>
+        <div className={style.right}>Right</div>
       </div>
     );
   }
@@ -378,8 +354,22 @@ const mapStateToProps = state => ({
   keyCode: state.get('keyCode'),
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  dropBlock, setBlock, setBlank, runBlock, addBlock, setFood, setSnakeDir, setKeyCode,
-}, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      dropBlock,
+      setBlock,
+      setBlank,
+      runBlock,
+      addBlock,
+      setFood,
+      setSnakeDir,
+      setKeyCode,
+    },
+    dispatch
+  );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Screen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Screen);

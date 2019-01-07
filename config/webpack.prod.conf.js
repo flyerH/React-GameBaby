@@ -1,7 +1,3 @@
-/*!
- * Created by He on 2017/7/10.
- * E-mail:h@strawtc.cn
- */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
 const path = require('path');

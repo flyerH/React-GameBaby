@@ -1,7 +1,3 @@
-/*!
- * Created by He on 2017/9/5.
- * E-mail:h@strawtc.cn
- */
 import Immutable from 'immutable';
 import { SET_BLOCK, SET_BLANK, SET_FOOD } from '../../action';
 
