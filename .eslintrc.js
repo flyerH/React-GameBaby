@@ -1,13 +1,15 @@
 module.exports = {
+  parser: 'babel-eslint',
   extends: ['airbnb', 'prettier'],
   plugins: ['react'],
   env: {
     browser: true,
+    node: true,
     es6: true,
   },
   rules: {
     'no-console': 'off',
-    'react/prefer-stateless-function': 'warn',
+    'react/prefer-stateless-function': 'off',
     'linebreak-style': 'off',
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx'] }],
     'no-unused-vars': 'warn',
