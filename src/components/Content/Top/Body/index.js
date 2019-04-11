@@ -4,9 +4,15 @@
  */
 import React, { Component } from 'react';
 import style from './style.scss';
-import Screen from '../../../../containers/Screen';
+import Screen from '@/containers/Screen';
+import start from '@/scenes/start';
 
 class ContentTopbody extends Component {
+
+  componentDidMount() {
+    start();
+  }
+
   render() {
     return (
       <div className={style.body}>

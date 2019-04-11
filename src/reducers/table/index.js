@@ -1,5 +1,5 @@
-import Immutable from 'immutable';
-import { SET_BLOCK, SET_BLANK, SET_FOOD } from '../../action';
+import Immutable, { List } from 'immutable';
+import { SET_TABLE, SET_BLOCK, SET_BLANK, SET_FOOD } from '@/action';
 
 const initialState = (() => {
   const table = [];
@@ -13,8 +13,10 @@ const initialState = (() => {
   return Immutable.fromJS(table);
 })();
 
-const table = (state = initialState, action) => {
+const table = (state = List(), action) => {
   switch (action.type) {
+    case SET_TABLE:
+      return action.data;
     case SET_BLOCK:
       return state.setIn([action.data.x, action.data.y], action.data.type);
     case SET_BLANK:

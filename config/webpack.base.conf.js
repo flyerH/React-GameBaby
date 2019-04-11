@@ -4,7 +4,8 @@ module.exports = {
   devtool: 'eval-source-map',
   entry: './src/index.js',
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: { '@': path.resolve(__dirname, '../src') },
   },
   module: {
     rules: [
@@ -14,14 +15,14 @@ module.exports = {
         loader: 'eslint-loader',
         exclude: /node_modules/,
         options: {
-          emitWarning: true
-        }
+          emitWarning: true,
+        },
       },
       {
         test: /\.(js|jsx)$/,
         use: ['babel-loader?cacheDirectory'],
-        exclude: /node_modules/
-      }
-    ]
-  }
+        exclude: /node_modules/,
+      },
+    ],
+  },
 };

@@ -1,7 +1,7 @@
 module.exports = {
   parser: 'babel-eslint',
   extends: ['airbnb', 'prettier'],
-  plugins: ['react'],
+  plugins: ['import', 'jsx-a11y', 'react'],
   env: {
     browser: true,
     node: true,
@@ -19,5 +19,12 @@ module.exports = {
     'react/no-unused-prop-types': 'warn',
     'react/destructuring-assignment': 'warn',
     'react/no-unused-state': 'warn',
+  },
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: './config/webpack.base.conf.js',
+      },
+    },
   },
 };

@@ -3,6 +3,7 @@
  * E-mail:h@strawtc.cn
  */
 export const DROP_BLOCK = 'DROP_BLOCK';
+export const SET_TABLE = 'SET_TABLE';
 export const SET_BLOCK = 'SET_BLOCK';
 export const SET_BLANK = 'SET_BLANK';
 export const RUN_BLOCK = 'RUN_BLOCK';
@@ -29,6 +30,11 @@ const dropBlock = (state) => {
   };
 };
 
+const setTable = (data) => ({
+  type: SET_TABLE,
+  data
+});
+
 const setBlock = (x, y, type) => ({
   type: SET_BLOCK,
   data: {
@@ -50,17 +56,17 @@ const runBlock = dir => ({
 const addBlock = (x, y) => ({
   type: ADD_BLOCK,
   data: {
-    x: x,
-    y: y,
+    x,
+    y,
   },
 });
 
 const setFood = (x, y, type) => ({
   type: SET_FOOD,
   data: {
-    x: x,
-    y: y,
-    type: type,
+    x,
+    y,
+    type,
   },
 });
 
@@ -74,4 +80,4 @@ const setKeyCode = keyCode => ({
   data: keyCode,
 });
 
-export { dropBlock, setBlock, setBlank, runBlock, addBlock, setFood, setSnakeDir, setKeyCode };
+export { dropBlock, setTable, setBlock, setBlank, runBlock, addBlock, setFood, setSnakeDir, setKeyCode };

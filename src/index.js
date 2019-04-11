@@ -5,8 +5,8 @@
 /* eslint camelcase: "off" */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import store from '@/store';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import zh from 'react-intl/locale-data/zh';
 import en from 'react-intl/locale-data/en';
@@ -14,9 +14,7 @@ import intl from 'intl';
 import zh_CN from './locale/zh_CN';
 import en_US from './locale/en_US';
 import App from './components/App';
-import reducer from './reducers';
 
-const store = createStore(reducer, window.devToolsExtension && window.devToolsExtension());
 addLocaleData([...en, ...zh]);
 
 const messages = {};
