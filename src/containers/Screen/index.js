@@ -40,6 +40,14 @@ const ScreenTable = ({ table }) => {
 };
 
 class Screen extends PureComponent {
+  // componentDidMount() {
+  //   window.addEventListener('keydown',e=>console.log(e))
+  //   setTimeout(() => {
+  //     const e = new KeyboardEvent('keydown', {keyCode: 32});
+  //     window.dispatchEvent(e)
+  //   }, 1000);
+  // }
+  
   render() {
     const { table } = this.props;
     return (

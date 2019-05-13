@@ -1,4 +1,4 @@
-import Immutable, { List } from 'immutable';
+import { List } from 'immutable';
 import { SET_TABLE, SET_BLOCK, SET_BLANK, SET_FOOD } from '@/action';
 
 const initialState = (() => {
@@ -10,7 +10,7 @@ const initialState = (() => {
     }
     table.push(cols);
   }
-  return Immutable.fromJS(table);
+  return List(table);
 })();
 
 const table = (state = List(), action) => {
@@ -28,4 +28,5 @@ const table = (state = List(), action) => {
   }
 };
 
+export { initialState };
 export default table;

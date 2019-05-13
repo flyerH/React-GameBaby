@@ -1,6 +1,7 @@
 import store from '@/store';
+import { initialState } from '@/reducers/table';
 import { setTable, setBlock, setBlank } from '@/action';
-import { List } from 'immutable';
+import Immutable, { List, setIn } from 'immutable';
 
 const nIn1 = [
   [1, 0],
@@ -64,8 +65,16 @@ const animaPos = () => {
   return posArr;
 };
 const oneAnimation = animaPos();
+
+const nIn1Init = () => {
+  let table = initialState;
+  for (let index = 0; index < nIn1.length; index++) {
+    table = table.setIn([nIn1[index][0], nIn1[index][1]], 1);
+  }
+  return table;
+};
 const initAnimation = () => {
-  let table = List();
+  let table = nIn1Init();
   store.dispatch(setTable(table));
   let i = 0;
 
@@ -77,8 +86,7 @@ const initAnimation = () => {
       table = table.setIn([oneAnimation[i][0], oneAnimation[i][1]], 1);
       store.dispatch(setTable(table));
       i += 1;
-      setTimeout(stepOneTimer, 10);
-    //   requestAnimationFrame(stepOneTimer);
+      setTimeout(stepOneTimer, 15);
     }
   };
   stepOneTimer();
