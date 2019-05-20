@@ -7,7 +7,8 @@ import { FormattedMessage } from 'react-intl';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setBlank, setSnakeDir, setKeyCode } from '../../../action';
+import { setBlank, setSnakeDir, setKeyCode, setFlow } from '@/action';
+import { gameSelect } from '@/scenes/menu';
 import style from './style.scss';
 
 class ContentBottom extends Component {
@@ -32,6 +33,16 @@ class ContentBottom extends Component {
         break;
       case 'rotateButton':
         this.props.setKeyCode(13);
+        const { step, setFlow } = this.props;
+        switch (step) {
+          case 0:
+            setFlow(1);
+            gameSelect();
+            break;
+
+          default:
+            break;
+        }
         break;
       default:
     }
@@ -41,82 +52,32 @@ class ContentBottom extends Component {
     return (
       <div className={style.contentBottom} onClick={this.buttonClick} role="presentation">
         <div className={style.topButton} id="topButton">
-          <FormattedMessage
-            id="topButton"
-            description="top button"
-            defaultMessage="Top"
-          >
-            {
-              msg => (
-                <p className={style.buttonTip}>
-                  {msg}
-                </p>
-              )
-            }
+          <FormattedMessage id="topButton" description="top button" defaultMessage="Top">
+            {msg => <p className={style.buttonTip}>{msg}</p>}
           </FormattedMessage>
           <div className={style.buttonDir} />
         </div>
         <div className={style.rightButton} id="rightButton">
-          <FormattedMessage
-            id="rightButton"
-            description="right button"
-            defaultMessage="Right"
-          >
-            {
-              msg => (
-                <p className={style.buttonTip}>
-                  {msg}
-                </p>
-              )
-            }
+          <FormattedMessage id="rightButton" description="right button" defaultMessage="Right">
+            {msg => <p className={style.buttonTip}>{msg}</p>}
           </FormattedMessage>
           <div className={style.buttonDir} />
         </div>
         <div className={style.bottomButton} id="bottomButton">
-          <FormattedMessage
-            id="bottomButton"
-            description="bottom button"
-            defaultMessage="Bottom"
-          >
-            {
-              msg => (
-                <p className={style.buttonTip}>
-                  {msg}
-                </p>
-              )
-            }
+          <FormattedMessage id="bottomButton" description="bottom button" defaultMessage="Bottom">
+            {msg => <p className={style.buttonTip}>{msg}</p>}
           </FormattedMessage>
           <div className={style.buttonDir} />
         </div>
         <div className={style.leftButton} id="leftButton">
-          <FormattedMessage
-            id="leftButton"
-            description="left button"
-            defaultMessage="Left"
-          >
-            {
-              msg => (
-                <p className={style.buttonTip}>
-                  {msg}
-                </p>
-              )
-            }
+          <FormattedMessage id="leftButton" description="left button" defaultMessage="Left">
+            {msg => <p className={style.buttonTip}>{msg}</p>}
           </FormattedMessage>
           <div className={style.buttonDir} />
         </div>
         <div className={style.rotateButton} id="rotateButton">
-          <FormattedMessage
-            id="rotateButton"
-            description="rotate button"
-            defaultMessage="Rotate"
-          >
-            {
-              msg => (
-                <p className={style.buttonTip}>
-                  {msg}
-                </p>
-              )
-            }
+          <FormattedMessage id="rotateButton" description="rotate button" defaultMessage="Rotate">
+            {msg => <p className={style.buttonTip}>{msg}</p>}
           </FormattedMessage>
           <span className={style.rotateArrowLeft}>
             <span className={style.rotateArrowBody} />
@@ -126,7 +87,6 @@ class ContentBottom extends Component {
           </span>
         </div>
       </div>
-
     );
   }
 }
@@ -135,14 +95,27 @@ ContentBottom.propTypes = {
   setBlank: PropTypes.func.isRequired,
   setSnakeDir: PropTypes.func.isRequired,
   setKeyCode: PropTypes.func.isRequired,
+  step: PropTypes.number.isRequired,
+  setFlow: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   snakeDir: state.get('snakeDir'),
+  step: state.get('core'),
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  setBlank, setSnakeDir, setKeyCode,
-}, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      setBlank,
+      setSnakeDir,
+      setKeyCode,
+      setFlow,
+    },
+    dispatch
+  );
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContentBottom);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ContentBottom);

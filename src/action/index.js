@@ -11,6 +11,7 @@ export const ADD_BLOCK = 'ADD_BLOCK';
 export const SET_FOOD = 'SET_FOOD';
 export const SET_SNAKEDIR = 'SET_SNAKEDIR';
 export const SET_KEYCODE = 'SET_KEYCODE';
+export const SET_FLOW = 'SET_FLOW';
 
 const dropBlock = (state) => {
   let hY = 0;
@@ -80,4 +81,9 @@ const setKeyCode = keyCode => ({
   data: keyCode,
 });
 
-export { dropBlock, setTable, setBlock, setBlank, runBlock, addBlock, setFood, setSnakeDir, setKeyCode };
+const setFlow = nowStep => ({
+  type: SET_FLOW,
+  step: nowStep,
+});
+
+export { dropBlock, setTable, setBlock, setBlank, runBlock, addBlock, setFood, setSnakeDir, setKeyCode, setFlow };

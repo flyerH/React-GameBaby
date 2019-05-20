@@ -3,6 +3,9 @@ import { initialState } from '@/reducers/table';
 import { setTable, setBlock, setBlank } from '@/action';
 import Immutable, { List, setIn } from 'immutable';
 
+let runFlag;
+let timer;
+
 const nIn1 = [
   [1, 0],
   [1, 1],
@@ -80,19 +83,27 @@ const initAnimation = () => {
 
   const l = oneAnimation.length;
   const stepOneTimer = () => {
+    if (!runFlag) return;
     if (i >= l) {
       initAnimation();
     } else {
       table = table.setIn([oneAnimation[i][0], oneAnimation[i][1]], 1);
       store.dispatch(setTable(table));
       i += 1;
-      setTimeout(stepOneTimer, 15);
+      timer = setTimeout(stepOneTimer, 15);
     }
   };
   stepOneTimer();
 };
-const init = () => {
+
+const run = () => {
+  runFlag = true;
   initAnimation();
 };
 
-export default init;
+const stop = () => {
+  runFlag = false;
+  clearTimeout(timer);
+};
+
+export default { run, stop };

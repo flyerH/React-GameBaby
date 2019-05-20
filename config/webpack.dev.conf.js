@@ -9,7 +9,7 @@ module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   output: {
     filename: 'js/[name].js',
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -22,15 +22,18 @@ module.exports = merge(baseWebpackConfig, {
             options: {
               sourceMap: true,
               modules: true,
-              localIdentName: '[local]'
-            }
+              localIdentName: '[local]',
+            },
           },
           {
-            loader: 'postcss-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+    ],
   },
   devServer: {
     contentBase: './public',
@@ -38,20 +41,20 @@ module.exports = merge(baseWebpackConfig, {
     hot: true,
     port: 8088,
     inline: true,
-    quiet: true
+    quiet: true,
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: ['Your application is running here: http://localhost:8088']
+        messages: ['Your application is running here: http://localhost:8088'],
       },
-      clearConsole: true
+      clearConsole: true,
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
-      template: './public/index.html'
-    })
-  ]
+      template: './public/index.html',
+    }),
+  ],
 });
