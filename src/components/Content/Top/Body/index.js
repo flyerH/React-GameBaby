@@ -20,7 +20,6 @@ class ContentTopbody extends Component {
   componentDidUpdate(preProps, prevState) {
     const { step } = this.props;
     if (preProps.step !== step) {
-      console.log(step);
       switch (step) {
         case 0:
           powerOn();

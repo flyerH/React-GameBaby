@@ -7,8 +7,15 @@ import { FormattedMessage } from 'react-intl';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setBlank, setSnakeDir, setKeyCode, setFlow } from '@/action';
-import { gameSelect } from '@/scenes/menu';
+import {
+  setBlank,
+  setSnakeDir,
+  setKeyCode,
+  setFlowAction,
+  switchGameNextAction,
+  switchGamePrevAction,
+} from '@/action';
+import { gameSelect, gameStart } from '@/scenes/menu';
 import style from './style.scss';
 
 class ContentBottom extends Component {
@@ -17,36 +24,61 @@ class ContentBottom extends Component {
     this.buttonClick = this.buttonClick.bind(this);
   }
 
-  buttonClick(e) {
+  buttonClick = e => {
+    const { step, setFlow, switchGameNext, switchGamePrev, selectedGameNumber } = this.props;
     switch (e.target.id) {
       case 'topButton':
         this.props.setSnakeDir(38);
         break;
       case 'rightButton':
-        this.props.setSnakeDir(39);
+        // this.props.setSnakeDir(39);
+        switch (step) {
+          case 1: {
+            switchGameNext();
+            break;
+          }
+          default:
+            break;
+        }
         break;
       case 'bottomButton':
         this.props.setSnakeDir(40);
         break;
       case 'leftButton':
-        this.props.setSnakeDir(37);
+        // this.props.setSnakeDir(37);
+        switch (step) {
+          case 1: {
+            switchGamePrev();
+            break;
+          }
+          default:
+            break;
+        }
         break;
       case 'rotateButton':
         this.props.setKeyCode(13);
-        const { step, setFlow } = this.props;
         switch (step) {
           case 0:
             setFlow(1);
             gameSelect();
             break;
-
+          case 1:
+            gameStart(selectedGameNumber);
+            break;
           default:
             break;
         }
         break;
       default:
     }
-  }
+  };
+
+  componentDidUpdate = prevProps => {
+    const { selectedGameNumber } = this.props;
+    if (selectedGameNumber !== prevProps.selectedGameNumber) {
+      gameSelect(selectedGameNumber);
+    }
+  };
 
   render() {
     return (
@@ -97,11 +129,15 @@ ContentBottom.propTypes = {
   setKeyCode: PropTypes.func.isRequired,
   step: PropTypes.number.isRequired,
   setFlow: PropTypes.func.isRequired,
+  switchGameNext: PropTypes.func.isRequired,
+  switchGamePrev: PropTypes.func.isRequired,
+  selectedGameNumber: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => ({
   snakeDir: state.get('snakeDir'),
   step: state.get('core'),
+  selectedGameNumber: state.get('selectedGameNumber'),
 });
 
 const mapDispatchToProps = dispatch =>
@@ -110,7 +146,9 @@ const mapDispatchToProps = dispatch =>
       setBlank,
       setSnakeDir,
       setKeyCode,
-      setFlow,
+      setFlow: setFlowAction,
+      switchGameNext: switchGameNextAction,
+      switchGamePrev: switchGamePrevAction,
     },
     dispatch
   );

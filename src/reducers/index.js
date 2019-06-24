@@ -8,6 +8,7 @@ import table from './table';
 import snake from './snake';
 import snakeDir from './snake/dir';
 import core from './flow';
+import selectedGameNumber from './game';
 
-const rootReducer = combineReducers({ keyCode, table, snake, snakeDir, core });
+const rootReducer = combineReducers({ keyCode, table, snake, snakeDir, core, selectedGameNumber });
 export default rootReducer;

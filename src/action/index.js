@@ -12,8 +12,10 @@ export const SET_FOOD = 'SET_FOOD';
 export const SET_SNAKEDIR = 'SET_SNAKEDIR';
 export const SET_KEYCODE = 'SET_KEYCODE';
 export const SET_FLOW = 'SET_FLOW';
+export const SWITCH_GAME_NEXT = 'SWITCH_GAME_NEXT';
+export const SWITCH_GAME_PREV = 'SWITCH_GAME_PREV';
 
-const dropBlock = (state) => {
+const dropBlock = state => {
   let hY = 0;
   if (state.headY > 7) {
     hY = 8;
@@ -31,9 +33,9 @@ const dropBlock = (state) => {
   };
 };
 
-const setTable = (data) => ({
+const setTable = data => ({
   type: SET_TABLE,
-  data
+  data,
 });
 
 const setBlock = (x, y, type) => ({
@@ -81,9 +83,30 @@ const setKeyCode = keyCode => ({
   data: keyCode,
 });
 
-const setFlow = nowStep => ({
+const setFlowAction = nowStep => ({
   type: SET_FLOW,
   step: nowStep,
 });
 
-export { dropBlock, setTable, setBlock, setBlank, runBlock, addBlock, setFood, setSnakeDir, setKeyCode, setFlow };
+const switchGameNextAction = () => ({
+  type: SWITCH_GAME_NEXT,
+});
+
+const switchGamePrevAction = () => ({
+  type: SWITCH_GAME_PREV,
+});
+
+export {
+  dropBlock,
+  setTable,
+  setBlock,
+  setBlank,
+  runBlock,
+  addBlock,
+  setFood,
+  setSnakeDir,
+  setKeyCode,
+  setFlowAction,
+  switchGameNextAction,
+  switchGamePrevAction,
+};
