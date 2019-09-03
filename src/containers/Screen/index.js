@@ -47,7 +47,7 @@ class Screen extends PureComponent {
   //     window.dispatchEvent(e)
   //   }, 1000);
   // }
-  
+
   render() {
     const { table } = this.props;
     return (

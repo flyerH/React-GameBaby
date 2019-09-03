@@ -1,4 +1,4 @@
-const flow = (state = 0, action) => {
+const flow = (state = -1, action) => {
   if (action.type === 'SET_FLOW') {
     return action.step;
   }

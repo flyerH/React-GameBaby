@@ -28,7 +28,7 @@ class ContentBottom extends Component {
     const { step, setFlow, switchGameNext, switchGamePrev, selectedGameNumber } = this.props;
     switch (e.target.id) {
       case 'topButton':
-        this.props.setSnakeDir(38);
+        // this.props.setSnakeDir(38);
         break;
       case 'rightButton':
         // this.props.setSnakeDir(39);
@@ -42,7 +42,7 @@ class ContentBottom extends Component {
         }
         break;
       case 'bottomButton':
-        this.props.setSnakeDir(40);
+        // this.props.setSnakeDir(40);
         break;
       case 'leftButton':
         // this.props.setSnakeDir(37);
@@ -63,6 +63,7 @@ class ContentBottom extends Component {
             gameSelect();
             break;
           case 1:
+            setFlow(2);
             gameStart(selectedGameNumber);
             break;
           default:

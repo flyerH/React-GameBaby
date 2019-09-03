@@ -5,6 +5,7 @@ module.exports = {
   entry: './src/index.js',
   resolve: {
     extensions: ['.js', '.jsx'],
+    mainFiles: ['index'],
     alias: { '@': path.resolve(__dirname, '../src') },
   },
   module: {

@@ -37,4 +37,6 @@ const gameMenu = [
   [19, 8],
 ];
 
-export default { gameMenu };
+const run = () => {};
+
+export default { gameMenu, run };

@@ -6,6 +6,7 @@ export const DROP_BLOCK = 'DROP_BLOCK';
 export const SET_TABLE = 'SET_TABLE';
 export const SET_BLOCK = 'SET_BLOCK';
 export const SET_BLANK = 'SET_BLANK';
+export const RUN_SNAKE = 'RUN_SNAKE';
 export const RUN_BLOCK = 'RUN_BLOCK';
 export const ADD_BLOCK = 'ADD_BLOCK';
 export const SET_FOOD = 'SET_FOOD';
@@ -49,6 +50,11 @@ const setBlock = (x, y, type) => ({
 
 const setBlank = () => ({
   type: SET_BLANK,
+});
+
+const runSnakeAction = data => ({
+  type: RUN_SNAKE,
+  data,
 });
 
 const runBlock = dir => ({
@@ -101,6 +107,7 @@ export {
   setTable,
   setBlock,
   setBlank,
+  runSnakeAction,
   runBlock,
   addBlock,
   setFood,

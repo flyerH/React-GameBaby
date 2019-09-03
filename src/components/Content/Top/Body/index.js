@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import { setFlow } from '@/action';
+import { setFlowAction } from '@/action';
 import Screen from '@/containers/Screen';
 import { powerOn } from '@/scenes/menu';
 
@@ -15,13 +15,17 @@ import style from './style.scss';
 class ContentTopbody extends Component {
   componentDidMount() {
     powerOn();
+    setTimeout(() => {
+      document.getElementById('rotateButton').click();
+      document.getElementById('rotateButton').click();
+    }, 300);
   }
 
   componentDidUpdate(preProps, prevState) {
     const { step } = this.props;
     if (preProps.step !== step) {
       switch (step) {
-        case 0:
+        case -1:
           powerOn();
           break;
 
@@ -53,7 +57,7 @@ export default connect(
   dispatch => {
     return {
       setFlow: step => {
-        dispatch(setFlow(step));
+        dispatch(setFlowAction(step));
       },
     };
   }
