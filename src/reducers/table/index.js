@@ -1,5 +1,5 @@
 import { List } from 'immutable';
-import { SET_TABLE, SET_BLOCK, SET_BLANK, SET_FOOD } from '@/action';
+import { SET_TABLE, SET_BLOCK, SET_BLANK } from '@/action';
 
 const initialState = (() => {
   const table = [];
@@ -21,8 +21,6 @@ const table = (state = List(), action) => {
       return state.setIn([action.data.x, action.data.y], action.data.type);
     case SET_BLANK:
       return initialState;
-    case SET_FOOD:
-      return state.setIn([action.data.x, action.data.y], action.data.type);
     default:
       return state;
   }

@@ -5,12 +5,12 @@
 import Immutable, { List } from 'immutable';
 import { RUN_SNAKE, RUN_BLOCK, ADD_BLOCK } from '@/action';
 
-const initialState = Immutable.fromJS([[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6]]);
+const initialState = Immutable.fromJS([[0, 0], [0, 1], [0, 2]]);
+// const initialState = Immutable.fromJS([[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6]]);
 
 const snake = (state = initialState, action) => {
   switch (action.type) {
     case RUN_SNAKE: {
-      console.log(action.data);
       return action.data;
     }
     case RUN_BLOCK: {

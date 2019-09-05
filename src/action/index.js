@@ -70,13 +70,9 @@ const addBlock = (x, y) => ({
   },
 });
 
-const setFood = (x, y, type) => ({
+const setFood = data => ({
   type: SET_FOOD,
-  data: {
-    x,
-    y,
-    type,
-  },
+  data,
 });
 
 const setSnakeDir = keyCode => ({
