@@ -131,8 +131,8 @@ const runSnake = () => {
 };
 
 const start = () => {
-  runSnake();
   setTimeout(() => {
+    runSnake();
     if (canRun) start();
   }, 800);
 };

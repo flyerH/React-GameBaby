@@ -15,10 +15,10 @@ import style from './style.scss';
 class ContentTopbody extends Component {
   componentDidMount() {
     powerOn();
-    setTimeout(() => {
-      document.getElementById('rotateButton').click();
-      document.getElementById('rotateButton').click();
-    }, 300);
+    // setTimeout(() => {
+    //   document.getElementById('rotateButton').click();
+    //   document.getElementById('rotateButton').click();
+    // }, 300);
   }
 
   componentDidUpdate(preProps, prevState) {
